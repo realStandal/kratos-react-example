@@ -6,12 +6,6 @@ This is a React web-application built using [`create-react-app`](https://create-
 
 It has been written using TypeScript and uses the [Bootstrap framework](https://getbootstrap.com) for UX.
 
-# Major Todos
-
-Implement trivial UI's and finish examples for other Kratos-flows. The `<Form>` elements backing the identification flows use React's uncontrolled components; I'm sure this can be changed to provide React control. Likely would result in the `<Form>`'s default submit-action being prevented and use of the [Kratos-SDK](https://github.com/ory/sdk/blob/master/clients/kratos/typescript/api.ts#L2545) (registration linked) to complete the flow. Where `flow` would be `?flow=...`, `payload` would be the state of the Form-elements, and `options` would contain a configuration to ensure `headers.Content-Type` is set to `application/x-www-form-urlencoded` **NOT** the default `application/json`.
-
-The Login/Register screens could be refactored; there are numerous areas of repetiative code, again this is trivial.
-
 # Getting Started
 
 This is a _lengthy_ set of steps to use this repository and some meta-data about Kratos (for my future-benefit as well). Consult the next section if you want to just get it up-and-running, no explanation.
