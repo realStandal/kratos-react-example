@@ -1,4 +1,4 @@
-# Kratos React Web Example
+# Kratos React Example
 
 **This example is in-complete.** Registration and Login flows are implemented; however, functionality related to state-management, trivial UX, and other Kratos flows are yet to be created. _It still serves to provide a working-example of how Kratos recommends the identification flow take place; using [`kratos-selfservice-ui-node`](https://github.com/ory/kratos-selfservice-ui-node/tree/master/src) as a starting-point._
 
