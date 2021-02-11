@@ -1,0 +1,120 @@
+# Adopted from https://github.com/ory/kratos/blob/master/contrib/quickstart/kratos/email-password/kratos.yml
+
+# This file contains the configuration for your Kratos container.
+# Reference: https://www.ory.sh/kratos/docs/reference/configuration
+
+# Updated from v0.4.6-alpha.1
+version: v0.5.5-alpha.1
+
+# Notice how the ENV-Variable defined in ../docker-compose.yml will overwrite whats expressed here.
+# This is true for *every* configuration value.
+dsn: memory
+
+serve:
+  public:
+    # Kratos uses cookies so you must always connect from "127.0.0.1"
+    base_url: http://127.0.0.1:4433/
+    cors:
+      allowed_origins:
+        - http://127.0.0.1:3000
+      allowed_methods:
+        - POST
+        - GET
+        - PUT
+        - PATCH
+        - DELETE
+      allowed_headers:
+        - Authorization
+        - Cookie
+      exposed_headers:
+        - Content-Type
+        - Set-Cookie
+      enabled: true
+      debug: true
+  admin:
+    base_url: http://127.0.0.1:4434/
+
+identity:
+  default_schema_url: file:///etc/config/kratos/identity.schema.json
+
+selfservice:
+  default_browser_return_url: http://127.0.0.1:3000/
+
+  whitelisted_return_urls:
+    - http://127.0.0.1:3000/
+
+  methods:
+    password:
+      enabled: true
+
+  # These `ui_url` values are entirely dependant upon your setup.
+  # For this example, the React-app runs in development mode on the default port of 3000.
+  # You can see how this would change for a production environment or other solutions.
+  flows:
+    error:
+      ui_url: http://127.0.0.1:3000/error
+
+    settings:
+      ui_url: http://127.0.0.1:3000/settings
+      privileged_session_max_age: 15m
+
+    recovery:
+      enabled: true
+      ui_url: http://127.0.0.1:3000/recovery
+
+    verification:
+      enabled: true
+      ui_url: http://127.0.0.1:3000/verify
+      after:
+        default_browser_return_url: http://127.0.0.1:3000/
+
+    logout:
+      after:
+        default_browser_return_url: http://127.0.0.1:3000/auth/login
+
+    login:
+      ui_url: http://127.0.0.1:3000/auth/login
+      lifespan: 10m
+
+    registration:
+      lifespan: 10m
+      ui_url: http://127.0.0.1:3000/auth/register
+      after:
+        default_browser_return_url: http://127.0.0.1:3000
+        password:
+          hooks:
+            # See the linked document for clarification. https://www.ory.sh/kratos/docs/self-service/hooks#session
+            - hook: session
+
+log:
+  level: debug
+  format: text
+  leak_sensitive_values: true
+
+secrets:
+  cookie:
+    # This is an example; secret must be this length (32 chars).
+    - deVuA0F46ZWFh3v4wGPVEQDlVXMbLKzG
+
+session:
+  # Change this to values such as '1s', '1m', etc. to see how Kratos handles invalidating a session.
+  lifespan: 1h
+
+# These values can be gathered by using the kratos cli.
+# The default values should work for testing.
+# Read the linked documentation and the blog-post for more information concerning production-use.
+# https://www.ory.sh/kratos/docs/guides/setting-up-password-hashing-parameters
+# https://www.ory.sh/kratos/docs/debug/performance-out-of-memory-password-hashing-argon2
+# https://www.ory.sh/choose-recommended-argon2-parameters-password-hashing/
+hashers:
+  argon2:
+    parallelism: 1
+    memory: 131072
+    iterations: 2
+    salt_length: 16
+    key_length: 16
+
+courier:
+  smtp:
+    connection_uri: smtps://test:test@mailslurper:1025/?skip_ssl_verify=true
+    from_address: no-reply@example.com
