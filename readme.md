@@ -123,7 +123,7 @@ Using `yarn start`, start the application in development mode. This will open yo
 
 ### 3.3) Test Registration
 
-Navigate to `http://127.0.0.1:3000/auth/register`. You should be automatically redirected to the `/self-service/registration/browser` endpoint, it'll likely happen faster than you can tell. You'll know you're successful if you see `?flow=XXXX...` as a query in the URL.
+Navigate to `http://127.0.0.1:3000/auth/register`. You should be automatically redirected to Kratos' `/self-service/registration/browser` endpoint, it'll likely happen faster than you can tell. You'll know it happened successfully if you see `?flow=XXXX...` as a query in the URL.
 
 At this point, you've initiated the registration-flow. You can use `?flow` to interact with a few of the Kratos endpoints. `curl` the following: `/self-service/registration/flows?id=string` substituting `string` with your flow-ID. This will provide you with information on the registration flow.
 
