@@ -1,6 +1,6 @@
 # Kratos React Example
 
-**This example is in-complete.** Registration and Login flows are implemented; however, functionality related to state-management, trivial UX, and other Kratos flows are yet to be created. _It still serves to provide a working-example of how Kratos recommends the identification flow take place; using [`kratos-selfservice-ui-node`](https://github.com/ory/kratos-selfservice-ui-node/tree/master/src) as a starting-point._
+**This example is in-complete.** Registration and Login flows are implemented; however, functionality related to state-management, trivial UX, and other Kratos flows are yet to be created. _It still serves to provide a working-example of how the Kratos identification flow takes place; using [`kratos-selfservice-ui-node`](https://github.com/ory/kratos-selfservice-ui-node/tree/master/src) as a starting-point._
 
 This is a React web-application built using [`create-react-app`](https://create-react-app.dev/docs/getting-started). It provides a self-service user-interface for interacting with a [Kratos Identity and User Management system](https://www.ory.sh/kratos/docs/).
 
