@@ -42,6 +42,8 @@ You're likely familiar with these; if not, nothing complex or crazy is taking pl
 - [Docker Engine](https://www.docker.com/) (`20.10.2`)
   - [Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/install/) [or Mac](https://docs.docker.com/docker-for-mac/install/) (`3.1.0`)
   - [Docker Compose](https://docs.docker.com/compose/install/) _Docker Desktop includes this tool_. (`1.27.4`)
+- [Node.JS](https://nodejs.org/en/) (`14.15.0`)
+  - [Yarn](https://yarnpkg.com/) (`1.22.10`)
 
 ## 1) Clone the Repository
 
